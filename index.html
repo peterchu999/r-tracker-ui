@@ -9,9 +9,18 @@
     <div id="root"></div>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
-      const myParam = urlParams.get("html");
-      document.querySelector("#root").innerHTML =
-        myParam;
+      const owner = urlParams.get("owner");
+      const agent = urlParams.get("agent");
+      const netto = urlParams.get("netto");
+      const refilling_date = new Date(urlParams.get("refilling_date"));
+      const expire_date = new Date(urlParams.get("expire_date"));
+      document.querySelector("#root").innerHTML = `
+        <p><b>Owner</b>: ${owner}</p>
+        <p><b>Agent</b>: ${agent}</p>
+        <p><b>Netto</b>: ${netto}</p>
+        <p><b>Refilling Date</b>: ${refilling_date.toLocaleDateString()}</p>
+        <p><b>Expire Date</b>: ${expire_date.toLocaleDateString()}</p>
+      `;
     </script>
   </body>
 </html>
