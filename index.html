@@ -10,7 +10,8 @@
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const myParam = urlParams.get("html");
-      document.querySelector("#root").innerHTML = myParam;
+      document.querySelector("#root").innerHTML =
+        myParam + process.env.SALT_KEY;
     </script>
   </body>
 </html>
