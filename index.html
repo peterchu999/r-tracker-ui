@@ -7,22 +7,42 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <img class="bg-red" src="./assets/logo.png" />
+    <img id="logo" class="bg-red w-100-auto" src="./assets/logo.png" />
+    <div id="headline-section">
+      <div class="headline">
+        <a href="tel:0616639241">Telp (061) 6639241</a>
+        <span> | </span>
+        <a href="tel:0616626529">Fax (061) 6626529</a>
+      </div>
+      <div class="headline">
+        <a href="http://">Jl. Krakatau No.249 Medan - 20239</a>
+        <span> | </span>
+        <a href="https://">www.wirasukses.com</a>
+      </div>
+    </div>
     <div id="root"></div>
+    <a id="btn-list-apar">List APAR</a>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
+      const ownerDashboardUrl =
+        urlParams.get("owner_dashboard_url") || "https://www.wirasukses.com";
       const owner = urlParams.get("owner");
       const agent = urlParams.get("agent");
       const netto = urlParams.get("netto");
+      const tank_number = urlParams.get("tank_number") || "-";
       const refilling_date = new Date(urlParams.get("refilling_date"));
       const expire_date = new Date(urlParams.get("expire_date"));
       document.querySelector("#root").innerHTML = `
-        <p><b>Owner</b>: ${owner}</p>
-        <p><b>Agent</b>: ${agent}</p>
-        <p><b>Netto</b>: ${netto}</p>
-        <p><b>Refilling Date</b>: ${refilling_date.toDateString()}</p>
-        <p><b>Expire Date</b>: ${expire_date.toDateString()}</p>
+        <p><b>Owner</b>: <span>${owner}</span></p>
+        <p><b>Agent</b>: <span>${agent}</span></p>
+        <p><b>Netto</b>: <span>${netto}</span></p>
+        <p><b>No. Tabung</b>: <span>${tank_number}</span></p>
+        <p><b>Refilling Date</b>: <span>${refilling_date.toDateString()}</span></p>
+        <p><b>Expire Date</b>: <span>${expire_date.toDateString()}</span></p>
       `;
+      document
+        .querySelector("#btn-list-apar")
+        .setAttribute("href", ownerDashboardUrl);
     </script>
   </body>
 </html>
