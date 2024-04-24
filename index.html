@@ -26,19 +26,23 @@
       const urlParams = new URLSearchParams(window.location.search);
       const ownerDashboardUrl =
         urlParams.get("owner_dashboard_url") || "https://www.wirasukses.com";
-      const owner = urlParams.get("owner");
-      const agent = urlParams.get("agent");
-      const netto = urlParams.get("netto");
+      const owner = urlParams.get("owner") || "-";
+      const agent = urlParams.get("agent") || "-";
+      const netto = urlParams.get("netto") || "-";
       const tank_number = urlParams.get("tank_number") || "-";
-      const refilling_date = new Date(urlParams.get("refilling_date"));
-      const expire_date = new Date(urlParams.get("expire_date"));
+      const refilling_date = urlParams.get("refilling_date")
+        ? new Date(urlParams.get("refilling_date")).toDateString()
+        : "-";
+      const expire_date = urlParams.get("expire_date")
+        ? new Date(urlParams.get("expire_date")).toDateString()
+        : "-";
       document.querySelector("#root").innerHTML = `
         <p><b>Owner</b>: <span>${owner}</span></p>
         <p><b>Agent</b>: <span>${agent}</span></p>
         <p><b>Netto</b>: <span>${netto}</span></p>
         <p><b>No. Tabung</b>: <span>${tank_number}</span></p>
-        <p><b>Refilling Date</b>: <span>${refilling_date.toDateString()}</span></p>
-        <p><b>Expire Date</b>: <span>${expire_date.toDateString()}</span></p>
+        <p><b>Refilling Date</b>: <span>${refilling_date}</span></p>
+        <p><b>Expire Date</b>: <span>${expire_date}</span></p>
       `;
       document
         .querySelector("#btn-list-apar")
