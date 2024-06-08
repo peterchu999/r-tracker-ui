@@ -26,8 +26,7 @@
     <a id="btn-list-apar">List APAR</a>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
-      const ownerDashboardUrl =
-        urlParams.get("owner_dashboard_url") || "https://www.wirasukses.com";
+      const ownerDashboardUrl = "https://rt-client-dashboard.vercel.app/";
       const owner = urlParams.get("owner") || "-";
       const agent = urlParams.get("agent") || "-";
       const netto = urlParams.get("netto") || "-";
